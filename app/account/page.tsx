@@ -1,3 +1,11 @@
+export const metadata= {
+  title : "Guest Area"
+}
+
 export default function Page(): JSX.Element {
-  return <h1>Hello from Account Page</h1>;
+  return (
+    <div>
+      <h1>Hello Sherif</h1> 
+    </div>
+  );
 }
