@@ -52,5 +52,7 @@ export interface DateRange {
 }
 
 export interface Settings {
+  minBookingLength: number;
+  maxBookingLength: number;
   [key: string]: unknown;
 }
