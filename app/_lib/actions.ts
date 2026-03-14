@@ -88,7 +88,7 @@ export async function createReservation(reservationData: ReservationData, formDa
   if (!session) throw new Error("You must be logged in");
   const newReservation = {
     ...reservationData,
-    guestId: session?.user.guestId,
+    guestId: session?.user.guestId!,
     numGuests: Number(formData.get("numGuests")),
     observations: (formData.get("observations") as string).slice(0, 1000),
     extrasPrice: 0,
@@ -98,7 +98,7 @@ export async function createReservation(reservationData: ReservationData, formDa
     status: "unconfirmed",
   };
 
-  const { error } = await supabase
+  const { data, error } = await supabase
     .from("bookings")
     .insert([newReservation])
     .select()
@@ -110,5 +110,6 @@ export async function createReservation(reservationData: ReservationData, formDa
   }
 
   revalidatePath(`/cabins/${reservationData.cabinId}`);
-  redirect("/cabins/thankyou");
+
+  return { bookingId: data.id, totalPrice: newReservation.totalPrice };
 }

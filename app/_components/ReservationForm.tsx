@@ -47,8 +47,21 @@ function ReservationForm({ cabin, user }: { cabin: Cabin; user: User }) {
       <form
         // action={createReservationWithData}
         action={async (formData) => {
-          await createReservationWithData(formData);
+          const result = await createReservationWithData(formData);
           resetRange();
+
+          const res = await fetch("/api/checkout", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              bookingId: result.bookingId,
+              cabinName: cabin.name,
+              totalPrice: result.totalPrice,
+              numNights,
+            }),
+          });
+          const { url } = await res.json();
+          if (url) window.location.href = url;
         }}
         className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col"
       >
