@@ -1,8 +1,9 @@
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 import TextExpander from "./TextExpander";
 import Image from "next/image";
+import type { Cabin as CabinType } from "@/app/_lib/types";
 
-function Cabin({ cabin }) {
+function Cabin({ cabin }: { cabin: CabinType }) {
   const { name, maxCapacity, image, description } = cabin;
   return (
     <div className="grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24">

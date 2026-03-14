@@ -98,7 +98,7 @@ export async function getBookings(guestId: number): Promise<Booking[]> {
   }
 
   // Map data to Booking type, add default status if missing
-  return (data ?? []).map((item: any) => ({
+  return (data ?? []).map((item: Record<string, unknown>) => ({
     ...item,
     status: item.status ?? "unknown", // Provide a default value if status is missing
     cabins:
@@ -165,7 +165,7 @@ export async function getCountries(): Promise<Country[]> {
 /////////////
 // CREATE
 
-export async function createGuest(newGuest: Partial<Guest>): Promise<unknown> {
+export async function createGuest(newGuest: Partial<Guest>): Promise<Guest | null> {
   const { data, error } = await supabase.from("guests").insert([newGuest]);
 
   if (error) {
@@ -175,6 +175,7 @@ export async function createGuest(newGuest: Partial<Guest>): Promise<unknown> {
 
   return data;
 }
+/*
 
 export async function createBooking(
   newBooking: Partial<Booking>,
@@ -192,10 +193,10 @@ export async function createBooking(
 
   return data as Booking | null;
 }
-
+*/
 /////////////
 // UPDATE
-
+/*
 export async function updateGuest(
   id: number,
   updatedFields: Partial<Guest>,
@@ -243,3 +244,5 @@ export async function deleteBooking(id: number): Promise<void> {
     throw new Error("Booking could not be deleted");
   }
 }
+
+*/

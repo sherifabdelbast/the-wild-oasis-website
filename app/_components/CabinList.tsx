@@ -4,10 +4,8 @@ import CabinCard from "@/app/_components/CabinCard";
 import type { Cabin } from "@/app/_lib/types";
 import { getCabins } from "../_lib/data-service";
 
-type FilterType = "all" | "small" | "medium" | "large";
-
 type Props = {
-  filter: FilterType;
+  filter: string;
 };
 
 async function CabinList({ filter }: Props) {

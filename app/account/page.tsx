@@ -1,11 +1,18 @@
-export const metadata= {
-  title : "Guest Area"
-}
+import { auth } from "../_lib/auth";
+import { headers } from "next/headers";
 
-export default function Page(): JSX.Element {
+export const metadata = {
+  title: "Guest Area",
+};
+
+export default async function Page(): Promise<JSX.Element> {
+  const session = await auth.api.getSession({
+    headers: headers(),
+  });
+  const firstName = session?.user?.name?.split(" ").at(0);
   return (
-    <div>
-      <h1>Hello Sherif</h1> 
-    </div>
+    <h2 className="font-semibold text-2xl text-accent-400 mb-7">
+      Welcome, {firstName}
+    </h2>
   );
 }
