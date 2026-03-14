@@ -36,7 +36,7 @@ function DateSelector({ settings, cabin, bookedDates }: { settings: Settings; ca
   return (
     <div className="flex flex-col justify-between">
       <DayPicker
-        className="pt-12 place-self-center scale-[0.85] origin-top"
+        className="pt-8 md:pt-12 place-self-center scale-[0.7] sm:scale-[0.85] origin-top"
         mode="range"
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onSelect={((range: any) => setRange(range ?? { from: undefined, to: undefined })) as any}
@@ -54,8 +54,8 @@ function DateSelector({ settings, cabin, bookedDates }: { settings: Settings; ca
         }
       />
 
-      <div className="flex items-center justify-between px-8 bg-accent-500 text-primary-800 h-[72px]">
-        <div className="flex items-baseline gap-6">
+      <div className="flex items-center justify-between px-3 sm:px-8 bg-accent-500 text-primary-800 h-[72px]">
+        <div className="flex items-baseline gap-2 sm:gap-6 flex-wrap">
           <p className="flex gap-2 items-baseline">
             {discount > 0 ? (
               <>

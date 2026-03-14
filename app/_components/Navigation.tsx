@@ -9,8 +9,8 @@ export default async function Navigation(): Promise<JSX.Element> {
 
   console.log(session);
   return (
-    <nav className="z-10 text-xl">
-      <ul className="flex gap-16 items-center">
+    <nav className="z-10 text-sm sm:text-base md:text-xl">
+      <ul className="flex gap-4 sm:gap-8 md:gap-16 items-center">
         <li>
           {
             <Link
@@ -41,7 +41,7 @@ export default async function Navigation(): Promise<JSX.Element> {
                 alt={session.user.name}
                 referrerPolicy="no-referrer"
               />
-              <span>Guest area</span>
+              <span className="hidden sm:inline">Guest area</span>
             </Link>
           ) : (
             <Link

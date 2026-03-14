@@ -17,7 +17,7 @@ function UpdateProfileForm({
   return (
     <form
       action={updateGuest}
-      className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
+      className="bg-primary-900 py-6 px-4 sm:py-8 sm:px-8 md:px-12 text-lg flex gap-6 flex-col"
     >
       <div className="space-y-2">
         <label>Full name</label>
