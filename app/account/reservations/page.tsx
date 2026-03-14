@@ -8,7 +8,8 @@ export const metadata = {
 
 export default async function Page() {
   const session = await getAuthSession();
-  const bookings = await getBookings(session?.user.guestId!);
+  if (!session) throw new Error("You must be logged in");
+  const bookings = await getBookings(session.user.guestId!);
 
   return (
     <div>

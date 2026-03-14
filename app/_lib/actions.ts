@@ -88,7 +88,7 @@ export async function createReservation(reservationData: ReservationData, formDa
   if (!session) throw new Error("You must be logged in");
   const newReservation = {
     ...reservationData,
-    guestId: session?.user.guestId!,
+    guestId: session.user.guestId!,
     numGuests: Number(formData.get("numGuests")),
     observations: (formData.get("observations") as string).slice(0, 1000),
     extrasPrice: 0,
