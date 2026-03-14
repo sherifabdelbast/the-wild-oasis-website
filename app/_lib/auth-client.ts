@@ -10,11 +10,6 @@ export const signInWithGoogle = async () => {
   });
 };
 
-export const signInWithFacebook = async () => {
-  await authClient.signIn.social({
-    provider: "facebook",
-  });
-};
 
 export const signOut = async () => {
   await authClient.signOut({
